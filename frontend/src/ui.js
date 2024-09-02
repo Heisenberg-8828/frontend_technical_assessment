@@ -2,6 +2,8 @@ import React, { useRef, useState, useCallback } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
+
+// Separate imports for each node
 import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
@@ -49,7 +51,7 @@ export const PipelineUI = () => {
     addNode,
     onNodesChange,
     onEdgesChange,
-    onConnect
+    onConnect,
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
