@@ -1,33 +1,29 @@
 // draggableNode.js
+import React from 'react';
 
 export const DraggableNode = ({ type, label }) => {
-    const onDragStart = (event, nodeType) => {
-      const appData = { nodeType }
-      event.target.style.cursor = 'grabbing';
-      event.dataTransfer.setData('application/reactflow', JSON.stringify(appData));
-      event.dataTransfer.effectAllowed = 'move';
-    };
-  
-    return (
-      <div
-        className={type}
-        onDragStart={(event) => onDragStart(event, type)}
-        onDragEnd={(event) => (event.target.style.cursor = 'grab')}
-        style={{ 
-          cursor: 'grab', 
-          minWidth: '80px', 
-          height: '60px',
-          display: 'flex', 
-          alignItems: 'center', 
-          borderRadius: '8px',
-          backgroundColor: '#1C2536',
-          justifyContent: 'center', 
-          flexDirection: 'column'
-        }} 
-        draggable
-      >
-          <span style={{ color: '#fff' }}>{label}</span>
-      </div>
-    );
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData('application/reactflow', JSON.stringify({ nodeType }));
+    event.dataTransfer.effectAllowed = 'move';
   };
-  
+
+  return (
+    <div
+      onDragStart={(event) => onDragStart(event, type)}
+      draggable
+      style={{
+        padding: '5px 10px',
+        backgroundColor: '#1E4C97',  /* Match with the navbar color */
+        borderRadius: '4px',
+        color: 'white',
+        cursor: 'grab',
+        fontWeight: '500',
+        transition: 'background-color 0.3s',
+      }}
+      onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2A69AC'}  /* Lighter shade on hover */
+      onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1E4C97'}
+    >
+      {label}
+    </div>
+  );
+};

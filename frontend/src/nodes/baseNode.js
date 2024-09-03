@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Handle, Position } from 'reactflow';
 import styled from 'styled-components';
 
@@ -52,6 +52,10 @@ export const BaseNode = ({ id, data, type, handles, label, children }) => {
     setNodeType(e.target.value);
   };
 
+  useEffect(() => {
+    console.log("Rendering BaseNode with handles:", handles);
+  }, [handles]);
+
   return (
     <NodeContainer>
       <NodeTitle>{label}</NodeTitle>
@@ -78,7 +82,7 @@ export const BaseNode = ({ id, data, type, handles, label, children }) => {
           type={handle.type}
           position={handle.position}
           id={handle.id}
-          style={handle.style || {}}
+          style={handle.style || { background: '#555' }} // Adding a default background color to make sure it's visible
         />
       ))}
     </NodeContainer>

@@ -1,16 +1,18 @@
+import React from 'react';
 import { GlobalStyle } from './GlobalStyle';
-import { PipelineToolbar } from './toolbar';
+import { Navbar } from './components/Navbar';
 import { PipelineUI } from './ui';
 import { SubmitButton } from './submit';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
+import { theme } from './theme'; 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
+       
         <GlobalStyle />
-        <PipelineToolbar />
+        <Navbar />
         <PipelineUI />
         <SubmitButton />
       </div>

@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { DraggableNode } from '../draggableNode';
 
 const NavbarContainer = styled.nav`
-  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  background: linear-gradient(135deg, #050A30, #111D5E); /* Darker deep space blue gradient */
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+  color: #dcdcdc; /* Light grey text */
 `;
 
 const Logo = styled.div`
@@ -25,7 +25,7 @@ const NodeItems = styled.div`
 export const Navbar = () => {
   return (
     <NavbarContainer>
-      <Logo>PipelineApp</Logo>
+      <Logo>VectorShift.ai</Logo>
       <NodeItems>
         <DraggableNode type='customInput' label='Input' />
         <DraggableNode type='llm' label='LLM' />
